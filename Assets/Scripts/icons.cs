@@ -28,33 +28,18 @@ public class icons : MonoBehaviour
         iconsGM = GameObject.Find("IconsManager");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void FixedUpdate()
-    {
-       
-    }
-
+    
     private void tappedHandler(object sender, System.EventArgs e)
     {
         Vector2 direction = new Vector2((float)Random.Range(-10f, 10f), (float)Random.Range(-10f, 10f));
         rb.AddForce(direction, ForceMode2D.Impulse);
-        rb.AddTorque(2, ForceMode2D.Impulse);
-        Debug.Log("Hit");
-            
-            //instantiate cloud animations
-        
+        rb.AddTorque(2, ForceMode2D.Impulse);           
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Icon")
         {
-            Debug.Log("Icons Collide!");
             Instantiate(ps, transform.position, transform.rotation);
         }
     }

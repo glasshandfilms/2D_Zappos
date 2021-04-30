@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1257082236934912648}
+  - component: {fileID: 1408700818695837826}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -35,6 +36,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1408700818695837826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2061394028534750395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f94d0fceef025c946b57777fb34329f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconsManager: {fileID: 0}
+  blue: {fileID: 4605418877419896145}
+  green: {fileID: 4605418877994210406}
+  orange: {fileID: 4605418878241920674}
+  purple: {fileID: 4605418878500372879}
+  teal: {fileID: 4605418878056434404}
 --- !u!1 &4605418877419896145
 GameObject:
   m_ObjectHideFlags: 0

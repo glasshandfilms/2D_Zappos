@@ -6,13 +6,16 @@ using TouchScript.Gestures;
 public class iconsManager : MonoBehaviour
 {
 
-    public GameObject[] zapposIcons;
+    public icons_SO[] zapposIcons;
     public Vector3 scale;
     private TapGesture gesture;
-    private int currentIcon;
+    [SerializeField] private int currentIcon;
+    [SerializeField] private GameObject iconsPrefab;
+    [SerializeField] private List<GameObject> prefabs = new List<GameObject>();
     
     
-               
+    
+      
     private void OnEnable()
     {
         gesture = GetComponent<TapGesture>();
@@ -25,34 +28,53 @@ public class iconsManager : MonoBehaviour
     }
 
     void Start()
-    {      
-
+    {
+        currentIcon = 0;           
+            
         for (int i = 0; i < zapposIcons.Length; i++)
         {
-            zapposIcons[i] = Instantiate(zapposIcons[i]) as GameObject;
-            zapposIcons[i].gameObject.transform.localScale = scale;
-            zapposIcons[i].SetActive(true);
+            iconsPrefab.GetComponent<iconsDisplay>().icon = zapposIcons[i];
+            Instantiate(iconsPrefab);
+            iconsPrefab.transform.localScale = scale;
+            
         }
 
+        foreach(GameObject _iconPrefab in GameObject.FindGameObjectsWithTag("Icon"))
+        {
+            prefabs.Add(_iconPrefab);
+        }
+    }
+
+    private void Update()
+    {
         
     }
 
     private void tappedHandler(object sender, System.EventArgs e)
     {
-                
+
         var ray = Camera.main.ScreenPointToRay(gesture.ScreenPosition);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit) && hit.transform == transform)
         {
-
-            zapposIcons[currentIcon].transform.position = hit.point;
+            prefabs[currentIcon].transform.position = hit.point;
 
             Vector2 direction = new Vector2((float)Random.Range(-10f, 10f), (float)Random.Range(-10f, 10f));
-            var rb = zapposIcons[currentIcon].GetComponent<Rigidbody2D>();
+
+            var rb = prefabs[currentIcon].GetComponent<Rigidbody2D>();
+
             rb.AddForce(direction, ForceMode2D.Impulse);
             rb.AddTorque(2, ForceMode2D.Impulse);
 
-            currentIcon++;
+            if (currentIcon < zapposIcons.Length)
+            {
+                Debug.Log("start coroutine");
+                StartCoroutine(IconDestruction(currentIcon));
+                currentIcon++;
+            }
+           
+
+            
 
             if (currentIcon >= zapposIcons.Length)
             {
@@ -66,27 +88,13 @@ public class iconsManager : MonoBehaviour
         }
 
         
-        
-    }
 
-    
-    
-    void Update()
-    {
-        
     }
-
-    void ReInit()
+         
+    IEnumerator IconDestruction(int currentIcon)
     {
+        yield return new WaitForSeconds(5f);
+        prefabs[currentIcon].SetActive(false);
         
-    }
-     
-    IEnumerator IconDestruction()
-    {
-        yield return new WaitForSeconds(5);
-        for (int i=0; i<zapposIcons.Length; i++)
-        {
-            
-        }
     }
 }

@@ -735,6 +735,8 @@ MonoBehaviour:
   currentIcon: 0
   iconsPrefab: {fileID: 1335109830571131264, guid: 0fbf7ca3f7085fb4884ea889fa665963, type: 3}
   prefabs: []
+  maxIcons: 2
+  maxLife: 5
 --- !u!4 &1049675192
 Transform:
   m_ObjectHideFlags: 0

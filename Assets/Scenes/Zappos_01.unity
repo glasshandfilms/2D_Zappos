@@ -534,6 +534,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &573157531 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2061394028534750395, guid: edfee239a9b1ad14a8622df28909a43c, type: 3}
+  m_PrefabInstance: {fileID: 4605418879183179659}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &694264147
 GameObject:
   m_ObjectHideFlags: 0
@@ -737,6 +742,9 @@ MonoBehaviour:
   prefabs: []
   maxIcons: 2
   maxLife: 5
+  numActiveIcons: 0
+  backgroundManager: {fileID: 573157531}
+  bm: {fileID: 0}
 --- !u!4 &1049675192
 Transform:
   m_ObjectHideFlags: 0
@@ -2024,9 +2032,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1408700818695837826, guid: edfee239a9b1ad14a8622df28909a43c, type: 3}
+      propertyPath: chill
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1408700818695837826, guid: edfee239a9b1ad14a8622df28909a43c, type: 3}
+      propertyPath: speed
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1408700818695837826, guid: edfee239a9b1ad14a8622df28909a43c, type: 3}
       propertyPath: iconsManager
       value: 
-      objectReference: {fileID: 1049675191}
+      objectReference: {fileID: 1049675190}
     - target: {fileID: 2061394028534750395, guid: edfee239a9b1ad14a8622df28909a43c, type: 3}
       propertyPath: m_Name
       value: Background

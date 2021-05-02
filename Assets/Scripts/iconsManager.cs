@@ -9,11 +9,14 @@ public class iconsManager : MonoBehaviour
     public icons_SO[] zapposIcons;
     public Vector3 scale;
     private TapGesture gesture;
-    [SerializeField] private int currentIcon;
+    public int currentIcon;
     [SerializeField] private GameObject iconsPrefab;
     [SerializeField] private List<GameObject> prefabs = new List<GameObject>();
-    [SerializeField] private int maxIcons;
+    public int maxIcons;
     [SerializeField] private int maxLife;
+    public int numActiveIcons;
+    public GameObject backgroundManager;
+    public backgroundManager bm;
       
     private void OnEnable()
     {
@@ -28,7 +31,9 @@ public class iconsManager : MonoBehaviour
 
     void Start()
     {
-        currentIcon = 0;           
+        bm = backgroundManager.GetComponent<backgroundManager>();
+
+        currentIcon = 0;
             
         for (int i = 0; i < zapposIcons.Length; i++)
         {
@@ -37,9 +42,11 @@ public class iconsManager : MonoBehaviour
             iconsPrefab.transform.localScale = scale;
             StartCoroutine(IconDestruction(currentIcon));
             currentIcon++;
-            if(currentIcon >= zapposIcons.Length)
+            
+            if (currentIcon >= zapposIcons.Length)
             {
                 currentIcon = 0;
+                
             }
             
         }
@@ -55,33 +62,37 @@ public class iconsManager : MonoBehaviour
         
     }
 
+    private void CountActive()
+    {
+        numActiveIcons = 0;
+
+        for (int i = 0; i < prefabs.Count; i++)
+        {
+            if(prefabs[i].activeInHierarchy == true)
+            {
+                numActiveIcons++;
+            }
+        }
+        
+        Debug.Log("number of active objects " + numActiveIcons);
+    }
+
     private void tappedHandler(object sender, System.EventArgs e)
     {
+        CountActive();
+
+        if (numActiveIcons < maxIcons)
+        {
+            if (currentIcon == zapposIcons.Length - 1)
+            {
+                StartCoroutine(bm.ChangeSpeed(0.1f, 0.5f, 60f));
+                currentIcon = 0;
+            }
+            prefabs[currentIcon].SetActive(true);
+            StartCoroutine(IconDestruction(currentIcon));
+            StickyShot();
+        }
         
-        if (prefabs[currentIcon].active == false && currentIcon == zapposIcons.Length - 1)
-        {
-            Debug.Log("gimme a second");
-            prefabs[currentIcon].SetActive(true);
-            StartCoroutine(IconDestruction(currentIcon));
-            currentIcon = 0;
-            StickyShot();
-        }
-
-        if (prefabs[currentIcon].active == true && currentIcon == zapposIcons.Length - 1)
-        {
-            Debug.Log("we are all here!");
-            prefabs[currentIcon].SetActive(false);
-            currentIcon = 0;
-        }
-
-        if (prefabs[currentIcon].active == false && currentIcon < zapposIcons.Length)
-        {
-            Debug.Log("click");
-            prefabs[currentIcon].SetActive(true);
-            StartCoroutine(IconDestruction(currentIcon));
-            StickyShot();
-            
-        }       
     }
 
     private void StickyShot()
@@ -109,4 +120,5 @@ public class iconsManager : MonoBehaviour
         prefabs[currentIcon].SetActive(false);
         
     }
+
 }

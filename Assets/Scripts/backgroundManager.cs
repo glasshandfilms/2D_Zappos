@@ -13,40 +13,37 @@ public class backgroundManager : MonoBehaviour
     [SerializeField] private GameObject purple;
     [SerializeField] private GameObject teal;
     [Range(0, 4)]
-    public float speed;
-    [SerializeField] private float _numbertopick;
-
+    public float speed = 0.1f;
+    public float previousIcons;
+    public float duration;
+    public float newIconCount;
     
-
-
+   
     void Start()
     {
         im = iconsManager.GetComponent<iconsManager>();
         
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
-
-       // _numbertopick = ((im.numActiveIcons+1) * speed);
-        blue.GetComponent<WavySprite>().waveSpeed = speed;
-        green.GetComponent<WavySprite>().waveSpeed = speed;
-        orange.GetComponent<WavySprite>().waveSpeed = speed;
-        purple.GetComponent<WavySprite>().waveSpeed = speed;
-        teal.GetComponent<WavySprite>().waveSpeed = speed;
+        previousIcons = im.numCurrentIcons - 1;
+        blue.GetComponent<WavySprite>().textureSpeed = speed * newIconCount;
+        green.GetComponent<WavySprite>().textureSpeed = speed * newIconCount;
+        orange.GetComponent<WavySprite>().textureSpeed = speed * newIconCount;
+        purple.GetComponent<WavySprite>().textureSpeed = speed * newIconCount;
+        teal.GetComponent<WavySprite>().textureSpeed = speed * newIconCount;
     }
 
-    public IEnumerator ChangeSpeed(float v_start, float v_end, float duration)
+    public IEnumerator calculateSpeed()
     {
-        float elapsed = 0.0f;
-        while (elapsed < duration)
+        Debug.Log("Calculated Speed");
+        var t = 0f;
+        while (t < duration)
         {
-            speed = Mathf.Lerp(v_start, v_end, elapsed / duration);
-            elapsed += Time.deltaTime;
+            t += Time.deltaTime;
+            newIconCount = Mathf.Lerp(previousIcons, im.numCurrentIcons, t / duration);
             yield return null;
         }
-        speed = v_end;
     }
 }

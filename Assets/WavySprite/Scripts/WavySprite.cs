@@ -106,6 +106,8 @@ public class WavySprite:MonoBehaviour{
 
 	private bool forceUpdate=false;
 
+    
+
 	private void Awake(){
 		isCanvas=isChildOfCanvas(transform);
 		CreateComponents();

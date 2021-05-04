@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -4220801484167908711}
   - component: {fileID: 3024262681918401905}
   - component: {fileID: -4753362483669749649}
+  - component: {fileID: 1790056364705018142}
   m_Layer: 0
   m_Name: icons_prefab01
   m_TagString: Icon
@@ -55,7 +56,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 7db449be05a94da4e8e90f3f37b066d8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -80,7 +81,7 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
+  m_DrawMode: 2
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
@@ -136,7 +137,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f18a6d1b002b4244bb400f1862fffb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 11400000, guid: 42ffd48cf8d481047bb5049d58c8b8e0, type: 2}
+  icon: {fileID: 11400000, guid: 60cb347353b2b7648997062bbd574eff, type: 2}
+  efb_bool: 0
+  efb: 0
 --- !u!114 &3024262681918401905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,3 +191,22 @@ MonoBehaviour:
   distanceLimit: Infinity
   combinePointers: 0
   combinePointersInterval: 0.3
+--- !u!95 &1790056364705018142
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1335109830571131264}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a418a234c72046b41990660274446079, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

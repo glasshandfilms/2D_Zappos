@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db22f9071c0513447b301ac60c163766, type: 3}
+  m_Name: ball_3
+  m_EditorClassIdentifier: 
+  iconName: ball_3
+  spriteArtwork: {fileID: 21300000, guid: 1d45e7d57ec28e34c8285eb9580727ee, type: 3}
+  radius: 2.39
+  physicsMaterial: {fileID: 6200000, guid: e1502e9b077475b4cb98b4ff12980f61, type: 2}
+  enableFlipbook: 0
+  flipbook: {fileID: 0}

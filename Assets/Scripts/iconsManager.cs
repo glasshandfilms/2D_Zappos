@@ -94,9 +94,12 @@ public class iconsManager : MonoBehaviour
             prefabs[currentIcon].SetActive(true);
             StartCoroutine(IconDestruction(currentIcon));
             StickyShot();
+            SpawnCloud();
         }
 
         StartCoroutine(bm.calculateSpeed());
+
+
     }
 
     private void StickyShot()
@@ -116,6 +119,11 @@ public class iconsManager : MonoBehaviour
 
             currentIcon++;
         }
+    }
+
+    private void SpawnCloud()
+    {
+        //instantiate cloud on transform.postion
     }
          
     IEnumerator IconDestruction(int currentIcon)

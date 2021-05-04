@@ -28,11 +28,11 @@ public class backgroundManager : MonoBehaviour
     void Update()
     {
         previousIcons = im.numCurrentIcons - 1;
-        blue.GetComponent<WavySprite>().textureSpeed = speed * newIconCount;
-        green.GetComponent<WavySprite>().textureSpeed = speed * newIconCount;
-        orange.GetComponent<WavySprite>().textureSpeed = speed * newIconCount;
-        purple.GetComponent<WavySprite>().textureSpeed = speed * newIconCount;
-        teal.GetComponent<WavySprite>().textureSpeed = speed * newIconCount;
+        blue.GetComponent<WavySprite>().textureSpeed = speed /* newIconCount*/;
+        green.GetComponent<WavySprite>().textureSpeed = speed /* newIconCount*/;
+        orange.GetComponent<WavySprite>().textureSpeed = speed /* newIconCount*/;
+        purple.GetComponent<WavySprite>().textureSpeed = speed /* newIconCount*/;
+        teal.GetComponent<WavySprite>().textureSpeed = speed /* newIconCount*/;
     }
 
     public IEnumerator calculateSpeed()
